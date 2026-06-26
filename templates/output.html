@@ -1,3 +1,111 @@
-<h1>
-    {{prediction}}
-</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1d2671);
+            background-size:400% 400%;
+            animation:bgMove 10s ease infinite;
+            overflow:hidden;
+            font-family:'Poppins',sans-serif;
+        }
+
+        @keyframes bgMove{
+            0%{background-position:0% 50%;}
+            50%{background-position:100% 50%;}
+            100%{background-position:0% 50%;}
+        }
+
+        .prediction{
+            position:relative;
+            font-size:70px;
+            font-weight:bold;
+            text-transform:uppercase;
+            letter-spacing:4px;
+
+            background:linear-gradient(90deg,#00f5ff,#ffffff,#00ff95,#00f5ff);
+            background-size:300%;
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+
+            animation:
+                textGradient 5s linear infinite,
+                zoomIn 1.2s ease,
+                floating 3s ease-in-out infinite;
+
+            text-shadow:
+                0 0 10px rgba(0,255,255,.5),
+                0 0 20px rgba(0,255,255,.5),
+                0 0 40px rgba(0,255,255,.4);
+        }
+
+        @keyframes textGradient{
+            0%{background-position:0%;}
+            100%{background-position:300%;}
+        }
+
+        @keyframes zoomIn{
+            from{
+                opacity:0;
+                transform:scale(.2) rotate(-10deg);
+            }
+            to{
+                opacity:1;
+                transform:scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes floating{
+            0%,100%{
+                transform:translateY(0px);
+            }
+            50%{
+                transform:translateY(-12px);
+            }
+        }
+
+        .prediction::before{
+            content:'';
+            position:absolute;
+            top:0;
+            left:-120%;
+            width:40%;
+            height:100%;
+            background:rgba(255,255,255,.5);
+            transform:skewX(-25deg);
+
+            animation:shine 2.5s infinite;
+        }
+
+        @keyframes shine{
+            100%{
+                left:140%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="prediction">
+        {{ prediction }}
+    </h1>
+
+</body>
+</html>
