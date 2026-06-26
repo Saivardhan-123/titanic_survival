@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titanic Survival Prediction</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+        }
+
+        .container{
+            width:430px;
+            background:white;
+            border-radius:20px;
+            padding:35px;
+            box-shadow:0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        h1{
+            text-align:center;
+            color:#203a43;
+            margin-bottom:25px;
+        }
+
+        .input-group{
+            margin-bottom:18px;
+        }
+
+        label{
+            display:block;
+            margin-bottom:8px;
+            font-weight:600;
+            color:#333;
+        }
+
+        input,
+        select{
+            width:100%;
+            padding:12px;
+            border:1px solid #ccc;
+            border-radius:10px;
+            font-size:15px;
+            transition:.3s;
+        }
+
+        input:focus,
+        select:focus{
+            outline:none;
+            border-color:#2c5364;
+            box-shadow:0 0 8px rgba(44,83,100,.3);
+        }
+
+        button{
+            width:100%;
+            padding:14px;
+            border:none;
+            border-radius:10px;
+            background:#203a43;
+            color:white;
+            font-size:17px;
+            cursor:pointer;
+            transition:.3s;
+            margin-top:10px;
+        }
+
+        button:hover{
+            background:#2c5364;
+            transform:translateY(-2px);
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Titanic Survival Prediction</h1>
+
+    <form action="{{url_for('predict')}}" method="POST">
+
+        <div class="input-group">
+            <label>Pclass</label>
+            <select name="Pclass" required>
+                <option value="">Select Class</option>
+                <option value="1">1st Class</option>
+                <option value="2">2nd Class</option>
+                <option value="3">3rd Class</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Sex</label>
+            <select name="Sex" required>
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Age</label>
+            <input type="number" step="0.1" name="Age" placeholder="Enter Age" required>
+        </div>
+
+        <div class="input-group">
+            <label>SibSp</label>
+            <input type="number" name="SibSp" placeholder="No. of Siblings/Spouses" required>
+        </div>
+
+        <div class="input-group">
+            <label>Parch</label>
+            <input type="number" name="Parch" placeholder="No. of Parents/Children" required>
+        </div>
+
+        <div class="input-group">
+            <label>Fare</label>
+            <input type="number" step="0.01" name="Fare" placeholder="Ticket Fare" required>
+        </div>
+
+        <button type="submit">
+            Predict Survival
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
